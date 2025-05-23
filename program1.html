@@ -1,13 +1,15 @@
 <html>
-    <head></head>
-    <body>
-        <h1 id="a">Mother Theresa</h1>
-        <button onclick="a()">click me to modify the content in h1 tag</button>
+    <head>
         <script>
             function a(){
-                document.getElementById('a').style.fontSize="50px";
-                document.getElementById('a').style.color="red";
-            }           
+                var a=document.getElementById("a").value;
+                document.getElementById("s").innerHTML="String is: "+a;
+            }
         </script>
-    </body>
+        <body>
+            Enter String:<input type="=text" id="a">
+            <h1 id="s"></h1>
+            <button onclick="a()">Click me to see the string</button>
+        </body>
+    </head>
 </html>
