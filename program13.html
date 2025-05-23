@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Operations</title>
+    <script>
+        function a() {
+            var v = document.getElementById("inputText").value;
+            document.write(v.toUpperCase() + "<br>");
+            document.write(v.toLowerCase() + "<br>");
+            document.write(v.includes("rishi") + "<br>");
+            document.write(v.indexOf("i") + "<br>");
+            document.write(v.replace("i", "r") + "<br>");
+            document.write(v.split(" ") + "<br>");
+        }
+    </script>
+</head>
+<body>
+    <h1>Enter Value to Process</h1>
+    Enter String: <input type="text" id="inputText">
+    <button onclick="a()">Click me to see String</button>
+</body>
+</html>
