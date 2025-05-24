@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fashion E-Commerce Store</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #fafafa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+  header {
+    background-color: #222;
+    color: #fff;
+    padding: 1.2rem 2rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  }
+
+  .product-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: 1rem 1.2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: #222;
+  }
+
+  .product-desc {
+    font-size: 0.9rem;
+    flex-grow: 1;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .product-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #e91e63;
+    margin-bottom: 1rem;
+  }
+
+  .add-to-cart-btn {
+    background-color: #e91e63;
+    border: none;
+    color: white;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 0.65rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .add-to-cart-btn:hover {
+    background-color: #c2185b;
+  }
+
+  h2 {
+    margin-top: 3rem;
+    text-align: center;
+    color: #222;
+  }
+
+  .cart-container {
+    max-width: 600px;
+    margin: 2rem auto 3rem auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+
+  .cart-items {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+  }
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+  }
+
+  .payment-section {
+    margin-top: 2rem;
+  }
+
+  label {
+    font-weight: 600;
+    margin-right: 10px;
+  }
+
+  select, button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1.8px solid #ccc;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  select:focus {
+    border-color: #e91e63;
+  }
+
+  button {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .qr-code-container {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .qr-code-container img {
+    width: 180px;
+    height: 180px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+  }
+
+  footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+
+  @media (max-width: 600px) {
+    .product-card {
+      height: auto;
+    }
+    .product-img {
+      height: 200px;
+    }
+    .cart-container {
+      width: 90%;
+      padding: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>Fashion E-Commerce Store</header>
+
+<main>
+  <section class="product-grid" aria-label="Fashion products">
+
+    <article class="product-card" data-id="1" data-name="Elegant Red Dress" data-price="79.99">
+      <img class="product-img" src="https://images.unsplash.com/photo-1503342452485-86e13bf73143?auto=format&fit=crop&w=500&q=80" alt="Elegant Red Dress" />
+      <div class="product-info">
+        <h3 class="product-name">Elegant Red Dress</h3>
+        <p class="product-desc">Perfect for evening parties, made with soft velvet fabric.</p>
+        <div class="product-price">$79.99</div>
+        <button class="add-to-cart-btn" aria-label="Add Elegant Red Dress to cart">Add to Cart</button>
+      </div>
+    </article>
+
+    <article class="product-card" data-id="2" data-name="Casual Blue Jeans" data-price="59.99">
+      <img class="product-img" src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=80" alt="Casual Blue Jeans" />
+      <div class="product-info">
+        <h3 class="product-name">Casual Blue Jeans</h3>
+        <p class="product-desc">Comfort fit with slightly tapered legs for a flattering look.</p>
+        <div class="product-price">$59.99</div>
+        <button class="add-to-cart-btn" aria-label="Add Casual Blue Jeans to cart">Add to Cart</button>
+      </div>
+    </article>
+
+    <article class="product-card" data-id="3" data-name="Stylish Leather Jacket" data-price="149.99">
+      <img class="product-img" src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=500&q=80" alt="Stylish Leather Jacket" />
+      <div class="product-info">
+        <h3 class="product-name">Stylish Leather Jacket</h3>
+        <p class="product-desc">Add a rugged touch to any outfit with this genuine leather jacket.</p>
+        <div class="product-price">$149.99</div>
+        <button class="add-to-cart-btn" aria-label="Add Stylish Leather Jacket to cart">Add to Cart</button>
+      </div>
+    </article>
+
+    <article class="product-card" data-id="4" data-name="Classic White Sneakers" data-price="89.99">
+      <img class="product-img" src="https://images.unsplash.com/photo-1528701800489-565d6ce2b0e8?auto=format&fit=crop&w=500&q=80" alt="Classic White Sneakers" />
+      <div class="product-info">
+        <h3 class="product-name">Classic White Sneakers</h3>
+        <p class="product-desc">Comfortable and stylish sneakers perfect for everyday use.</p>
+        <div class="product-price">$89.99</div>
+        <button class="add-to-cart-btn" aria-label="Add Classic White Sneakers to cart">Add to Cart</button>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="cart-container" aria-label="Shopping Cart">
+    <h2>Your Cart</h2>
+    <div class="cart-items" id="cart-items" aria-live="polite" aria-relevant="all">
+      <p>Your cart is empty.</p>
+    </div>
+    <div class="payment-section" aria-label="Payment Section">
+      <label for="bank-select">Select Bank for Payment:</label>
+      <select id="bank-select" aria-describedby="bank-desc">
+        <option value="">--Choose a Bank--</option>
+        <option value="bank1">First National Bank</option>
+        <option value="bank2">Global Trust Bank</option>
+        <option value="bank3">City Savings Bank</option>
+      </select>
+      <button id="pay-btn" disabled>Pay Now</button>
+      <p id="bank-desc" style="font-size: 0.85rem; color: #444; margin-top: 6px;">
+        Choose a bank to generate payment QR code.
+      </p>
+    </div>
+    <div class="qr-code-container" id="qr-code-container" aria-live="polite" aria-atomic="true" style="display:none;">
+      <h3>Scan QR Code to Pay</h3>
+      <img id="qr-code" src="" alt="QR Code for bank payment" />
+    </div>
+  </section>
+</main>
+
+<footer>© 2024 Fashion E-Commerce Store. All rights reserved.</footer>
+
+<script>
+  (function(){
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const bankSelect = document.getElementById('bank-select');
+    const payBtn = document.getElementById('pay-btn');
+    const qrCodeContainer = document.getElementById('qr-code-container');
+    const qrCodeImage = document.getElementById('qr-code');
+
+    let cart = {};
+
+    // Helper to update cart UI
+    function updateCartUI() {
+      const keys = Object.keys(cart);
+      if(!keys.length) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        payBtn.disabled = true;
+        qrCodeContainer.style.display = 'none';
+        qrCodeImage.src = "";
+        bankSelect.value = "";
+        return;
+      }
+      let total = 0;
+      let html = '';
+      keys.forEach(id => {
+        const item = cart[id];
+        total += item.price * item.qty;
+        html += `
+          <div class="cart-item">
+            <span>${item.name} x ${item.qty}</span>
+            <span>$${(item.price * item.qty).toFixed(2)}</span>
+          </div>
+        `;
+      });
+      html += `<hr/><div class="cart-item" style="font-weight:bold;">
+                <span>Total</span>
+                <span>$${total.toFixed(2)}</span>
+              </div>`;
+      cartItemsContainer.innerHTML = html;
+      payBtn.disabled = !bankSelect.value;
+      qrCodeContainer.style.display = 'none';
+      qrCodeImage.src = "";
+    }
+
+    // Add products to cart
+    addToCartButtons.forEach(btn => {
+      btn.addEventListener('click', e => {
+        const card = btn.closest('.product-card');
+        const id = card.dataset.id;
+        const name = card.dataset.name;
+        const price = parseFloat(card.dataset.price);
+
+        if(cart[id]) {
+          cart[id].qty += 1;
+        } else {
+          cart[id] = {name, price, qty: 1};
+        }
+        updateCartUI();
+      });
+    });
+
+    // Enable pay button only if bank is selected and cart not empty
+    bankSelect.addEventListener('change', () => {
+      payBtn.disabled = !bankSelect.value || !Object.keys(cart).length;
+      qrCodeContainer.style.display = 'none';
+      qrCodeImage.src = "";
+    });
+
+    // Generate payment QR code for selected bank and total amount
+    payBtn.addEventListener('click', () => {
+      if(!bankSelect.value) return;
+      const bank = bankSelect.options[bankSelect.selectedIndex].text;
+      const total = Object.values(cart).reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2);
+      // We'll create a fake payment string for QR code encoding
+      const paymentData = `Bank:${bank};Amount:$${total};Store:FashionEcommerce2024`;
+      // Using Google Chart API for QR code generation
+      const qrAPI = 'https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl=';
+      const encodedData = encodeURIComponent(paymentData);
+      const qrURL = qrAPI + encodedData;
+
+      qrCodeImage.src = qrURL;
+      qrCodeContainer.style.display = 'block';
+    });
+  })();
+</script>
+
+</body>
+</html>
+
+```
