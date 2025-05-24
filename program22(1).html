@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script>
+            function a(){
+                var x=parseInt(document.getElementById("a").value);
+                if(x%2!=0){
+                    x+=1;
+                }
+                for(var i=0;i<x;i++){
+                    for(var j=0;j<x;j++){
+                        if(i==j || j==x-1 || j==0 || i+j==x-1 || i==x/2){
+                            document.write("*"+" ");
+                        }
+                        else{
+                            document.write("&nbsp&nbsp&nbsp");
+                        }
+                    }
+                    document.write("<br>");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        Enter number to show the pattern<input type="text" id="a"/>
+        <button onclick="a()">Run</button>
+    </body>
+</html>
